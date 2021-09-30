@@ -1,0 +1,15 @@
+name: Templa-rs
+version: "1.0.0"
+author: IEEE-VIT. <contact@ieeevit.org>
+about: Solves all boilerplate template needs!
+args:
+    - template-type:
+        short: t
+        long: type
+        help: Specify the type of template you need
+        takes_value: true
+    - name:
+        short: n
+        long: name
+        help: Specify the name of your project
+        takes_value: true
