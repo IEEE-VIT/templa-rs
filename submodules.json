@@ -1,0 +1,14 @@
+{
+    "submodules" : [
+        {
+            "name" : "react-boilerplate",
+            "url" : "https://github.com/react-boilerplate/react-boilerplate",
+            "tags" : ["react", "reactjs"]
+        },
+        {
+            "name" : "node-boilerplate",
+            "url" : "https://github.com/hagopj13/node-express-boilerplate",
+            "tags" : ["node", "nodejs"]
+        }
+    ]
+}
