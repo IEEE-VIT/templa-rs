@@ -1,7 +1,12 @@
 use std::io;
-use std::sync::mpsc;
 use std::str;
 use std::thread;
+use crate::search;
+use crate::command;
+use std::sync::mpsc;
+use std::io::Write;
+use crate::parse_json;
+use crate::models::enums;
 use std::time::{Duration, Instant};
 use tui::{
     backend::CrosstermBackend,
@@ -17,10 +22,6 @@ use crossterm::{
     terminal::{disable_raw_mode, enable_raw_mode,EnterAlternateScreen, LeaveAlternateScreen},
 };
 
-use crate::models::enums;
-use crate::parse_json;
-use crate::search;
-use crate::command;
 
 pub fn render_tui(key:String, proj_name: &str){
     enable_raw_mode().expect("can run in raw mode");
@@ -122,10 +123,7 @@ pub fn render_tui(key:String, proj_name: &str){
                     if output.status.success() {
                             println!("\nCloned {} successfully\n", &proj_name);
                         } else {
-                            println!(
-                                "\nError Encountered while cloning, {:?}",
-                                str::from_utf8(&output.stderr)
-                            );
+                            io::stderr().write_all(&output.stderr).unwrap();
                         }
                     break;
                     }
