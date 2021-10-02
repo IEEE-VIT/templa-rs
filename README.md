@@ -1,6 +1,6 @@
 <p align="center"><img width="40%" src="https://hacktoberfest.digitalocean.com/_nuxt/img/logo-hacktoberfest-full.f42e3b1.svg"/></p>
 
-<p align="center">One Stop Solution for all boilerplate needs!</p>
+<p align="center">A Revolutionary One Stop Solution for all boilerplate needs!</p>
 <p align="center">Consider leaving a :star: if you found the project helpful.</p>
 
 # Templa-rs
