@@ -1,5 +1,6 @@
 use std::io;
 use std::sync::mpsc;
+use std::str;
 use std::thread;
 use std::time::{Duration, Instant};
 use tui::{
@@ -109,7 +110,23 @@ pub fn render_tui(key:String, proj_name: &str){
                                     .expect("there is always a selected template"),
                             )
                             .unwrap();
-                    command::git_clone(proj_name, selected_template.url.to_string(),&mut terminal);
+
+                    disable_raw_mode().unwrap();
+                    execute!(
+                            terminal.backend_mut(),
+                            LeaveAlternateScreen,
+                        ).unwrap();
+                    println!("\nCloning {}..\n", proj_name);
+                    let output = command::git_clone(proj_name, selected_template.url.to_string());
+                    terminal.show_cursor().unwrap();
+                    if output.status.success() {
+                            println!("\nCloned {} successfully\n", &proj_name);
+                        } else {
+                            println!(
+                                "\nError Encountered while cloning, {:?}",
+                                str::from_utf8(&output.stderr)
+                            );
+                        }
                     break;
                     }
                 }
