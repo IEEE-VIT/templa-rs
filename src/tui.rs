@@ -1,6 +1,12 @@
 use std::io;
-use std::sync::mpsc;
+use std::str;
 use std::thread;
+use crate::search;
+use crate::command;
+use std::sync::mpsc;
+use std::io::Write;
+use crate::parse_json;
+use crate::models::enums;
 use std::time::{Duration, Instant};
 use tui::{
     backend::CrosstermBackend,
@@ -12,17 +18,16 @@ use tui::{
 };
 use crossterm::{
     event::{self, Event as CEvent, KeyCode},
-    terminal::{disable_raw_mode, enable_raw_mode},
+    execute,
+    terminal::{disable_raw_mode, enable_raw_mode,EnterAlternateScreen, LeaveAlternateScreen},
 };
 
-use crate::models::enums;
-use crate::parse_json;
-use crate::search;
-use crate::command;
 
 pub fn render_tui(key:String, proj_name: &str){
     enable_raw_mode().expect("can run in raw mode");
-    
+    let mut stdout = io::stdout();
+    execute!(stdout, EnterAlternateScreen).unwrap();
+
     let (tx, rx) = mpsc::channel();
     let tick_rate = Duration::from_millis(200);
     thread::spawn(move || {
@@ -67,8 +72,11 @@ pub fn render_tui(key:String, proj_name: &str){
         match rx.recv().unwrap() {
             enums::Event::Input(event) => match event.code {
                 KeyCode::Char('q') => {
-                    println!("{:?}", template_list_state.selected());
                     disable_raw_mode().unwrap();
+                    execute!(
+                        terminal.backend_mut(),
+                        LeaveAlternateScreen,
+                    ).unwrap();
                     terminal.show_cursor().unwrap();
                     break;
                 }
@@ -103,7 +111,20 @@ pub fn render_tui(key:String, proj_name: &str){
                                     .expect("there is always a selected template"),
                             )
                             .unwrap();
-                    command::git_clone(proj_name, selected_template.url.to_string(),&mut terminal);
+
+                    disable_raw_mode().unwrap();
+                    execute!(
+                            terminal.backend_mut(),
+                            LeaveAlternateScreen,
+                        ).unwrap();
+                    println!("\nCloning {}..\n", proj_name);
+                    let output = command::git_clone(proj_name, selected_template.url.to_string());
+                    terminal.show_cursor().unwrap();
+                    if output.status.success() {
+                            println!("\nCloned {} successfully\n", &proj_name);
+                        } else {
+                            io::stderr().write_all(&output.stderr).unwrap();
+                        }
                     break;
                     }
                 }
