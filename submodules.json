@@ -8,5 +8,10 @@
         "name" : "node-boilerplate",
         "url" : "https://github.com/hagopj13/node-express-boilerplate",
         "tags" : ["node", "nodejs"]
+    },
+     {
+        "name" : "jquery-boilerplate",
+        "url" : "https://github.com/jquery-boilerplate/jquery-boilerplate",
+        "tags" : ["jquery", "jqueryjs"]
     }
 ]
