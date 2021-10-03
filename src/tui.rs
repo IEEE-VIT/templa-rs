@@ -1,12 +1,16 @@
-use std::io;
-use std::str;
-use std::thread;
-use crate::search;
 use crate::command;
-use std::sync::mpsc;
+use crate::models::{enums, structs::Submodule};
+use crate::search;
+use crossterm::{
+    event::{self, Event as CEvent, KeyCode},
+    execute,
+    terminal::{disable_raw_mode, enable_raw_mode, EnterAlternateScreen, LeaveAlternateScreen},
+};
+use std::io;
 use std::io::Write;
-use crate::parse_json;
-use crate::models::enums;
+use std::str;
+use std::sync::mpsc;
+use std::thread;
 use std::time::{Duration, Instant};
 use tui::{
     backend::CrosstermBackend,
@@ -16,14 +20,8 @@ use tui::{
     widgets::{Block, BorderType, Borders, List, ListItem, ListState},
     Terminal,
 };
-use crossterm::{
-    event::{self, Event as CEvent, KeyCode},
-    execute,
-    terminal::{disable_raw_mode, enable_raw_mode,EnterAlternateScreen, LeaveAlternateScreen},
-};
 
-
-pub fn render_tui(key:String, proj_name: &str){
+pub fn render_tui(key: String, proj_name: &str, submodules: &[Submodule]) {
     enable_raw_mode().expect("can run in raw mode");
     let mut stdout = io::stdout();
     execute!(stdout, EnterAlternateScreen).unwrap();
@@ -58,31 +56,30 @@ pub fn render_tui(key:String, proj_name: &str){
     template_list_state.select(Some(0));
 
     loop {
-        terminal.draw(|rect| {
-            let size = rect.size();
-            let chunks = Layout::default()
-                .direction(Direction::Vertical)
-                .margin(2)
-                .constraints([Constraint::Percentage(80)].as_ref())
-                .split(size);
-            let template_list = render_templates(key.clone());
-            rect.render_stateful_widget(template_list, chunks[0], &mut template_list_state);
-        }).unwrap();
+        terminal
+            .draw(|rect| {
+                let size = rect.size();
+                let chunks = Layout::default()
+                    .direction(Direction::Vertical)
+                    .margin(2)
+                    .constraints([Constraint::Percentage(80)].as_ref())
+                    .split(size);
+                let template_list = render_templates(key.clone(), submodules);
+                rect.render_stateful_widget(template_list, chunks[0], &mut template_list_state);
+            })
+            .unwrap();
 
         match rx.recv().unwrap() {
             enums::Event::Input(event) => match event.code {
                 KeyCode::Char('q') => {
                     disable_raw_mode().unwrap();
-                    execute!(
-                        terminal.backend_mut(),
-                        LeaveAlternateScreen,
-                    ).unwrap();
+                    execute!(terminal.backend_mut(), LeaveAlternateScreen,).unwrap();
                     terminal.show_cursor().unwrap();
                     break;
                 }
                 KeyCode::Down => {
                     if let Some(selected) = template_list_state.selected() {
-                        let templates_length = parse_json::read_json().expect("can fetch template list").len();
+                        let templates_length = submodules.len();
                         if selected >= templates_length - 1 {
                             template_list_state.select(Some(0));
                         } else {
@@ -92,7 +89,7 @@ pub fn render_tui(key:String, proj_name: &str){
                 }
                 KeyCode::Up => {
                     if let Some(selected) = template_list_state.selected() {
-                        let templates_length = parse_json::read_json().expect("can fetch template list").len();
+                        let templates_length = submodules.len();
                         if selected > 0 {
                             template_list_state.select(Some(selected - 1));
                         } else {
@@ -102,7 +99,7 @@ pub fn render_tui(key:String, proj_name: &str){
                 }
                 KeyCode::Enter => {
                     if let Some(_) = template_list_state.selected() {
-                        let templates = search::perform_search(parse_json::read_json().unwrap(), key.clone())
+                        let templates = search::perform_search(submodules, key.clone())
                             .expect("can fetch template list");
                         let selected_template = templates
                             .get(
@@ -112,20 +109,18 @@ pub fn render_tui(key:String, proj_name: &str){
                             )
                             .unwrap();
 
-                    disable_raw_mode().unwrap();
-                    execute!(
-                            terminal.backend_mut(),
-                            LeaveAlternateScreen,
-                        ).unwrap();
-                    println!("\nCloning {}..\n", proj_name);
-                    let output = command::git_clone(proj_name, selected_template.url.to_string());
-                    terminal.show_cursor().unwrap();
-                    if output.status.success() {
+                        disable_raw_mode().unwrap();
+                        execute!(terminal.backend_mut(), LeaveAlternateScreen,).unwrap();
+                        println!("\nCloning {}..\n", proj_name);
+                        let output =
+                            command::git_clone(proj_name, selected_template.url.to_string());
+                        terminal.show_cursor().unwrap();
+                        if output.status.success() {
                             println!("\nCloned {} successfully\n", &proj_name);
                         } else {
                             io::stderr().write_all(&output.stderr).unwrap();
                         }
-                    break;
+                        break;
                     }
                 }
                 _ => {}
@@ -135,15 +130,14 @@ pub fn render_tui(key:String, proj_name: &str){
     }
 }
 
-fn render_templates<'a>(key: String) -> List<'a> {
+fn render_templates<'a>(key: String, submodules: &[Submodule]) -> List<'a> {
     let pets = Block::default()
         .borders(Borders::ALL)
         .style(Style::default().fg(Color::White))
         .title("Available Templates")
         .border_type(BorderType::Plain);
 
-    let template_list = parse_json::read_json().expect("can fetch json");
-    let filtered_template_list = search::perform_search(template_list, key).expect("can filter json");
+    let filtered_template_list = search::perform_search(submodules, key).expect("can filter json");
     let items: Vec<_> = filtered_template_list
         .iter()
         .map(|submodule| {
