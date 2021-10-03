@@ -19,4 +19,10 @@
     "url": "https://github.com/ribot/android-boilerplate",
     "tags": ["android", "mvvm", "rxjava"]
   }
+  ,
+  {
+    "name": "html5-boilerplate",
+    "url": "https://github.com/h5bp/html5-boilerplate",
+    "tags": ["html5", "html"]
+  }
 ]
