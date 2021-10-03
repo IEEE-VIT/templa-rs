@@ -25,4 +25,10 @@
     "url": "https://github.com/h5bp/html5-boilerplate",
     "tags": ["html5", "html"]
   }
+  ,
+  {
+    "name": "react-native-boilerplate",
+    "url": "https://github.com/thecodingmachine/react-native-boilerplate",
+    "tags": ["react-native", "native", "react"]
+  }
 ]
