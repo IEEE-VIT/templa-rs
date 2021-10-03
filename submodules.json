@@ -1,5 +1,5 @@
 [
-{
+
     "name": "react-boilerplate",
     "url": "https://github.com/react-boilerplate/react-boilerplate",
     "tags": ["react", "reactjs"]
@@ -23,5 +23,6 @@
     "name": "repo-boilerplate",
     "url": "https://github.com/mintel/repo-boilerplate",
     "tags" : ["none"]
-}
+  }
+
 ]
