@@ -18,17 +18,20 @@
     "name": "android-boilerplate",
     "url": "https://github.com/ribot/android-boilerplate",
     "tags": ["android", "mvvm", "rxjava"]
-  }
-  ,
+  },
   {
     "name": "html5-boilerplate",
     "url": "https://github.com/h5bp/html5-boilerplate",
     "tags": ["html5", "html"]
-  }
-  ,
+  },
   {
     "name": "react-native-boilerplate",
     "url": "https://github.com/thecodingmachine/react-native-boilerplate",
     "tags": ["react-native", "native", "react"]
+  },
+  {
+    "name": "nginx-boilerplate",
+    "url": "https://github.com/nginx-boilerplate/nginx-boilerplate",
+    "tags": ["nginx"]
   }
 ]
