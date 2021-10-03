@@ -2,21 +2,25 @@
   {
     "name": "react-boilerplate",
     "url": "https://github.com/react-boilerplate/react-boilerplate",
-    "tags": ["react", "reactjs"]
+    "tags": ["react", "reactjs"],
+    "owner": "react-boilerplate"
   },
   {
     "name": "node-boilerplate",
     "url": "https://github.com/hagopj13/node-express-boilerplate",
-    "tags": ["node", "nodejs"]
+    "tags": ["node", "nodejs"],
+    "owner": "hagopj13"
   },
   {
     "name": "jquery-boilerplate",
     "url": "https://github.com/jquery-boilerplate/jquery-boilerplate",
-    "tags": ["jquery", "jqueryjs", "js"]
+    "tags": ["jquery", "jqueryjs", "js"],
+    "owner": "jquery-boilerplate"
   },
   {
     "name": "android-boilerplate",
     "url": "https://github.com/ribot/android-boilerplate",
-    "tags": ["android", "mvvm", "rxjava"]
+    "tags": ["android", "mvvm", "rxjava"],
+    "owner": "ribot"
   }
 ]

@@ -1,11 +1,11 @@
 use clap::{load_yaml, App};
 
-mod tui;
-mod parse_json;
 mod command;
-mod search;
 mod models;
-
+mod parse_json;
+mod search;
+mod size;
+mod tui;
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     let yaml = load_yaml!("../commands.yml");
     let matches = App::from(yaml).get_matches();
