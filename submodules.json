@@ -9,4 +9,9 @@
         "url" : "https://github.com/hagopj13/node-express-boilerplate",
         "tags" : ["node", "nodejs"]
     }
+    {
+        "name": "repo-boilerplate",
+        "url": "https://github.com/mintel/repo-boilerplate",
+        "tags" : ["none"]
+    }
 ]
