@@ -8,6 +8,7 @@ use crossterm::{
     terminal::{disable_raw_mode, enable_raw_mode, EnterAlternateScreen, LeaveAlternateScreen},
 };
 use std::io;
+use std::io::Write;
 use std::str;
 use std::sync::mpsc;
 use std::thread;
@@ -22,6 +23,7 @@ use tui::{
 };
 
 pub fn render_tui(key: String, proj_name: &str) {
+pub fn render_tui(key: String, proj_name: &str, submodules: &[Submodule]) {
     enable_raw_mode().expect("can run in raw mode");
     let mut stdout = io::stdout();
     execute!(stdout, EnterAlternateScreen).unwrap();
@@ -65,6 +67,7 @@ pub fn render_tui(key: String, proj_name: &str) {
                     .constraints([Constraint::Percentage(80)].as_ref())
                     .split(size);
                 let template_list = render_templates(key.clone());
+                let template_list = render_templates(key.clone(), submodules);
                 rect.render_stateful_widget(template_list, chunks[0], &mut template_list_state);
             })
             .unwrap();
@@ -82,6 +85,7 @@ pub fn render_tui(key: String, proj_name: &str) {
                         let templates_length = parse_json::read_json()
                             .expect("can fetch template list")
                             .len();
+                        let templates_length = submodules.len();
                         if selected >= templates_length - 1 {
                             template_list_state.select(Some(0));
                         } else {
@@ -94,6 +98,7 @@ pub fn render_tui(key: String, proj_name: &str) {
                         let templates_length = parse_json::read_json()
                             .expect("can fetch template list")
                             .len();
+                        let templates_length = submodules.len();
                         if selected > 0 {
                             template_list_state.select(Some(selected - 1));
                         } else {
@@ -106,6 +111,8 @@ pub fn render_tui(key: String, proj_name: &str) {
                         let templates =
                             search::perform_search(parse_json::read_json().unwrap(), key.clone())
                                 .expect("can fetch template list");
+                        let templates = search::perform_search(submodules, key.clone())
+                            .expect("can fetch template list");
                         let selected_template = templates
                             .get(
                                 template_list_state
@@ -130,6 +137,17 @@ pub fn render_tui(key: String, proj_name: &str) {
                             Err(_e) => {}
                         }
 
+                        disable_raw_mode().unwrap();
+                        execute!(terminal.backend_mut(), LeaveAlternateScreen,).unwrap();
+                        println!("\nCloning {}..\n", proj_name);
+                        let output =
+                            command::git_clone(proj_name, selected_template.url.to_string());
+                        terminal.show_cursor().unwrap();
+                        if output.status.success() {
+                            println!("\nCloned {} successfully\n", &proj_name);
+                        } else {
+                            io::stderr().write_all(&output.stderr).unwrap();
+                        }
                         break;
                     }
                 }
@@ -140,7 +158,7 @@ pub fn render_tui(key: String, proj_name: &str) {
     }
 }
 
-fn render_templates<'a>(key: String) -> List<'a> {
+fn render_templates<'a>(key: String, submodules: &[Submodule]) -> List<'a> {
     let pets = Block::default()
         .borders(Borders::ALL)
         .style(Style::default().fg(Color::White))
@@ -151,6 +169,7 @@ fn render_templates<'a>(key: String) -> List<'a> {
 
     let filtered_template_list =
         search::perform_search(template_list, key).expect("can filter json");
+    let filtered_template_list = search::perform_search(submodules, key).expect("can filter json");
     let items: Vec<_> = filtered_template_list
         .iter()
         .map(|submodule| {
