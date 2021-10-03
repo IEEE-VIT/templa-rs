@@ -1,13 +1,18 @@
 [
   {
-    "name": "react-boilerplate",
-    "url": "https://github.com/react-boilerplate/react-boilerplate",
-    "tags": ["react", "reactjs"]
+    "name": "android-boilerplate",
+    "url": "https://github.com/ribot/android-boilerplate",
+    "tags": ["android", "mvvm", "rxjava"]
   },
   {
-    "name": "node-boilerplate",
-    "url": "https://github.com/hagopj13/node-express-boilerplate",
-    "tags": ["node", "nodejs"]
+    "name": "express-typescript-boilerplate",
+    "url": "https://github.com/w3tecch/express-typescript-boilerplate",
+    "tags": ["express-typescript", "expressjs"]
+  },
+  {
+    "name": "html5-boilerplate",
+    "url": "https://github.com/h5bp/html5-boilerplate",
+    "tags": ["html5", "html"]
   },
   {
     "name": "jquery-boilerplate",
@@ -15,8 +20,23 @@
     "tags": ["jquery", "jqueryjs", "js"]
   },
   {
-    "name": "android-boilerplate",
-    "url": "https://github.com/ribot/android-boilerplate",
-    "tags": ["android", "mvvm", "rxjava"]
+    "name": "nginx-boilerplate",
+    "url": "https://github.com/nginx-boilerplate/nginx-boilerplate",
+    "tags": ["nginx"]
+  },
+  {
+    "name": "node-boilerplate",
+    "url": "https://github.com/hagopj13/node-express-boilerplate",
+    "tags": ["node", "nodejs"]
+  },
+  {
+    "name": "react-boilerplate",
+    "url": "https://github.com/react-boilerplate/react-boilerplate",
+    "tags": ["react", "reactjs"]
+  },
+  {
+    "name": "react-native-boilerplate",
+    "url": "https://github.com/thecodingmachine/react-native-boilerplate",
+    "tags": ["react-native", "native", "react"]
   }
 ]
