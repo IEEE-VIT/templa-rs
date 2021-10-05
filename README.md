@@ -3,12 +3,12 @@
 <p align="center">One Stop Solution for all boilerplate needs!</p>
 <p align="center">Consider leaving a :star: if you found the project helpful.</p>
 
-![Issues](https://img.shields.io/github/issues/IEEE-VIT/templa-rs)
+<p align="center">![Issues](https://img.shields.io/github/issues/IEEE-VIT/templa-rs)
 ![License](https://img.shields.io/github/license/IEEE-VIT/templa-rs)
 ![Stars](https://img.shields.io/github/stars/IEEE-VIT/templa-rs)
 ![Forks](https://img.shields.io/github/forks/IEEE-VIT/templa-rs)
 ![Last Commit](https://img.shields.io/github/last-commit/IEEE-VIT/templa-rs)
-![Size](https://img.shields.io/github/repo-size/IEEE-VIT/templa-rs)
+![Size](https://img.shields.io/github/repo-size/IEEE-VIT/templa-rs)</p>
 
 # Templa-rs
 Templa-rs is a one-of-a-kind TUI tool written in Rust, which helps you generate boilerplate templates for various types of projects and architectures in a matter of seconds!
