@@ -116,9 +116,15 @@ jobs:
         shell: bash
         run: echo "RELEASE_VERSION=${GITHUB_REF:11}" >> $GITHUB_ENV
 
+      - name: Setup | Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: "^1.15.7"
+
       - name: Generate Changelog
-        uses: scottbrenner/generate-changelog-action@master
-        id: changelog
+        run: |
+          GO111MODULE=on go get github.com/git-chglog/git-chglog/cmd/git-chglog@0.9.1
+          git-chglog -c .github/chglog/release.yml $(git describe --tags) > RELEASE.md
 
       - name: Download Artifacts
         uses: actions/download-artifact@v2
@@ -131,4 +137,4 @@ jobs:
         with:
           name: Release ${{ env.RELEASE_VERSION }}
           files: templa-rs-*/templa-rs-*
-          body: ${{ steps.changelog.outputs.changelog }}
+          body_path: RELEASE.md
