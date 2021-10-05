@@ -1,5 +1,6 @@
-<p align="center">
-  ![](https://visitor-badge.glitch.me/badge?page_id=IEEE-VIT.IEEE-VIT)
+<img alt="PR_welcome" src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat&logo=github">
+<img alt="open_source" src="https://badges.frapsoft.com/os/v2/open-source.svg?v=103">
+![](https://visitor-badge.glitch.me/badge?page_id=IEEE-VIT.IEEE-VIT)
 ![Issues](https://img.shields.io/github/issues/IEEE-VIT/templa-rs)
 ![License](https://img.shields.io/github/license/IEEE-VIT/templa-rs)
 ![Stars](https://img.shields.io/github/stars/IEEE-VIT/templa-rs)
@@ -8,10 +9,6 @@
 ![Size](https://img.shields.io/github/repo-size/IEEE-VIT/templa-rs)
 ![Platform](https://img.shields.io/badge/Platform-Visual%20Studio%20Code-blue)
 ![Maintained](https://img.shields.io/maintenance/yes/2021)
- </p>
-  
-
-
 
 <p align="center"><img width="40%" src="https://hacktoberfest.digitalocean.com/_nuxt/img/logo-hacktoberfest-full.f42e3b1.svg"/></p>
 
