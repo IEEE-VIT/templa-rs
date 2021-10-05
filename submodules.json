@@ -41,7 +41,7 @@
     "url": "https://github.com/thecodingmachine/react-native-boilerplate",
     "tags": ["react-native", "native", "react"],
   },
-  { 
+  {
     "name": "fastapi-template",
     "url": "https://github.com/99sbr/fastapi-template",
     "tags": ["swagger", "fastapi", "python"],
@@ -50,5 +50,14 @@
   "name": "Flask-template",
   "url": "https://github.com/alisezer/flask-template",
   "tags": ["flask-app", "sqlalchemy", "python"],
+  {
+    "name": "Flask-template",
+    "url": "https://github.com/alisezer/flask-template",
+    "tags": ["flask-app", "sqlalchemy", "python"]
+  },
+  {
+    "name": "django-boilerplate",
+    "url": "https://github.com/osantana/quickstartup-template",
+    "tags": ["backend", "django", "python", "frontend"]
   }
 ]
