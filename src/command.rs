@@ -10,17 +10,16 @@ use progress_bar::{
 use crate::size::get_repo_size;
 
 pub fn git_clone(proj_name: &str, url: String) -> Result<Repository, Error> {
-    println!("PROJ NAME = {}", &proj_name);
     let repo_size = get_repo_size(&url);
 
-    let mut progress_bar = ProgressBar::new(repo_size / 1000);
-
+    let mut progress_bar = ProgressBar::new(100);
     progress_bar.set_action("Loading", Color::Blue, Style::Bold);
 
     let mut cb = RemoteCallbacks::new();
 
     cb.transfer_progress(|stats| {
-        progress_bar.set_progression(stats.received_bytes() / 1000000);
+        let percentage_done = (stats.received_bytes() / 1000000) as f64  / (repo_size / 1000)  as f64;
+        progress_bar.set_progression((percentage_done * 100 as f64) as usize);
         true
     });
 
@@ -30,7 +29,7 @@ pub fn git_clone(proj_name: &str, url: String) -> Result<Repository, Error> {
         .fetch_options(fo)
         .clone(&url, Path::new(&proj_name));
     match repo {
-        Ok(_) => progress_bar.set_progression(&repo_size / 1000),
+        Ok(_) => progress_bar.set_progression(100),
         Err(_) => {}
     };
     repo

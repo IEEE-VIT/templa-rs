@@ -44,7 +44,6 @@
     "url": "https://github.com/99sbr/fastapi-template",
     "tags": ["swagger", "fastapi", "python"]
   },
-
   {
     "name": "Flask-template",
     "url": "https://github.com/alisezer/flask-template",
@@ -54,5 +53,10 @@
     "name": "django-boilerplate",
     "url": "https://github.com/osantana/quickstartup-template",
     "tags": ["backend", "django", "python", "frontend"]
+  },
+  {
+    "name": "react-pwa-boilerplate",
+    "url": "https://github.com/aneeshpanda/my-react-template",
+    "tags": ["react", "reactjs", "cra-pwa", "react-husky"]
   }
 ]
