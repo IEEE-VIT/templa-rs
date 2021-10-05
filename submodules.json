@@ -44,6 +44,7 @@
     "url": "https://github.com/99sbr/fastapi-template",
     "tags": ["swagger", "fastapi", "python"]
   },
+
   {
     "name": "Flask-template",
     "url": "https://github.com/alisezer/flask-template",
