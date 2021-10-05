@@ -2,53 +2,56 @@
   {
     "name": "android-boilerplate",
     "url": "https://github.com/ribot/android-boilerplate",
-    "tags": ["android", "mvvm", "rxjava"],
-    "owner": "ribot"
+    "tags": ["android", "mvvm", "rxjava"]
   },
   {
     "name": "express-typescript-boilerplate",
     "url": "https://github.com/w3tecch/express-typescript-boilerplate",
-    "tags": ["express-typescript", "expressjs"],
-    "owner": "w3tecch"
+    "tags": ["express-typescript", "expressjs"]
   },
   {
     "name": "html5-boilerplate",
     "url": "https://github.com/h5bp/html5-boilerplate",
-    "tags": ["html5", "html"],
+    "tags": ["html5", "html"]
   },
   {
     "name": "jquery-boilerplate",
     "url": "https://github.com/jquery-boilerplate/jquery-boilerplate",
-    "tags": ["jquery", "jqueryjs", "js"],
+    "tags": ["jquery", "jqueryjs", "js"]
   },
   {
     "name": "nginx-boilerplate",
     "url": "https://github.com/nginx-boilerplate/nginx-boilerplate",
-    "tags": ["nginx"],
+    "tags": ["nginx"]
   },
   {
     "name": "node-boilerplate",
     "url": "https://github.com/hagopj13/node-express-boilerplate",
-    "tags": ["node", "nodejs"],
+    "tags": ["node", "nodejs"]
   },
   {
     "name": "react-boilerplate",
     "url": "https://github.com/react-boilerplate/react-boilerplate",
-    "tags": ["react", "reactjs"],
+    "tags": ["react", "reactjs"]
   },
   {
     "name": "react-native-boilerplate",
     "url": "https://github.com/thecodingmachine/react-native-boilerplate",
-    "tags": ["react-native", "native", "react"],
+    "tags": ["react-native", "native", "react"]
   },
-  { 
+  {
     "name": "fastapi-template",
     "url": "https://github.com/99sbr/fastapi-template",
-    "tags": ["swagger", "fastapi", "python"],
+    "tags": ["swagger", "fastapi", "python"]
   },
-  { 
-  "name": "Flask-template",
-  "url": "https://github.com/alisezer/flask-template",
-  "tags": ["flask-app", "sqlalchemy", "python"],
+  {
+    "name": "Flask-template",
+    "url": "https://github.com/alisezer/flask-template",
+    "tags": ["flask-app", "sqlalchemy", "python"]
+  },
+  {
+    "name": "django-boilerplate",
+    "url": "https://github.com/osantana/quickstartup-template",
+    "tags": ["backend", "django", "python", "frontend"]
   }
 ]
