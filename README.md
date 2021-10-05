@@ -1,5 +1,6 @@
 <img alt="PR_welcome" src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat&logo=github">
 <img alt="open_source" src="https://badges.frapsoft.com/os/v2/open-source.svg?v=103">
+
 ![](https://visitor-badge.glitch.me/badge?page_id=IEEE-VIT.IEEE-VIT)
 ![Issues](https://img.shields.io/github/issues/IEEE-VIT/templa-rs)
 ![License](https://img.shields.io/github/license/IEEE-VIT/templa-rs)
