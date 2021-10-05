@@ -7,7 +7,7 @@
 ![Size](https://img.shields.io/github/repo-size/IEEE-VIT/templa-rs)
 ![Platform](https://img.shields.io/badge/Platform-Visual%20Studio%20Code-blue)
 ![Maintained](https://img.shields.io/maintenance/yes/2021)
-![Author](https://img.shields.io/badge/Owner-IEEE-VIT-orange)
+![Author](https://img.shields.io/badge/Owner-templa-rs-orange)
 
 <p align="center"><img width="40%" src="https://hacktoberfest.digitalocean.com/_nuxt/img/logo-hacktoberfest-full.f42e3b1.svg"/></p>
 
