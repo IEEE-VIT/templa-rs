@@ -58,5 +58,10 @@
     "name": "react-pwa-boilerplate",
     "url": "https://github.com/aneeshpanda/my-react-template",
     "tags": ["react", "reactjs", "cra-pwa", "react-husky"]
+  },
+  {
+    "name": "basic-php-project-structure",
+    "url": "https://github.com/medeirosinacio/basic-php-project-structure",
+    "tags": ["php", "php-template", "backend"]
   }
 ]

@@ -5,6 +5,7 @@ use serde_json::Value;
 mod command;
 mod models;
 mod search;
+mod size;
 mod tui;
 mod app;
 

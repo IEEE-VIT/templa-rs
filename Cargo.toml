@@ -14,3 +14,5 @@ serde = { version = "1.0.13", features = ["derive"] }
 serde_json = "1.0.68"
 thiserror = "1.0.29"
 tui = { version = "0.16", default-features = false, features = ['crossterm'] }
+git2 = "0.13.23"
+progress_bar = "0.1.3"

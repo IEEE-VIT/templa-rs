@@ -7,7 +7,6 @@ use crossterm::{
     terminal::{disable_raw_mode, enable_raw_mode, EnterAlternateScreen, LeaveAlternateScreen},
 };
 use std::io;
-use std::io::Write;
 use std::str;
 use std::sync::mpsc;
 use std::thread;
@@ -120,10 +119,13 @@ pub fn render_tui(key: String, proj_name: &str, submodules: Vec<Submodule>) {
                         let output =
                             command::git_clone(proj_name, selected_template.url.to_string());
                         terminal.show_cursor().unwrap();
-                        if output.status.success() {
-                            println!("\nCloned {} successfully\n", &proj_name);
-                        } else {
-                            io::stderr().write_all(&output.stderr).unwrap();
+                        match output {
+                            Ok(_) => {
+                                println!("\nCloned the repo successfully")
+                            }
+                            Err(e) => {
+                                println!("{}", e)
+                            }
                         }
                         break;
                     }
