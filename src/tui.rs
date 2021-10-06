@@ -7,7 +7,6 @@ use crossterm::{
     terminal::{disable_raw_mode, enable_raw_mode, EnterAlternateScreen, LeaveAlternateScreen},
 };
 use std::io;
-use std::io::Write;
 use std::str;
 use std::sync::mpsc;
 use std::thread;
