@@ -1,6 +1,6 @@
+use crate::app::App;
 use crate::command;
 use crate::models::{enums, structs::Submodule};
-use crate::app::App;
 use crossterm::{
     event::{self, Event as CEvent, KeyCode, KeyModifiers},
     execute,
@@ -145,9 +145,10 @@ pub fn render_tui(proj_name: &str, submodules: Vec<Submodule>, optional_first_qu
 
                         disable_raw_mode().unwrap();
                         execute!(terminal.backend_mut(), LeaveAlternateScreen,).unwrap();
+                        let proj_name = if proj_name.to_string().is_empty() { selected_template.name.to_string() } else { proj_name.to_string() };
                         println!("\nCloning {}..\n", proj_name);
                         let output =
-                            command::git_clone(proj_name, selected_template.url.to_string());
+                            command::git_clone(&proj_name, selected_template.url.to_string());
                         terminal.show_cursor().unwrap();
                         match output {
                             Ok(_) => {
