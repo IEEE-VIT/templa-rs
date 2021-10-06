@@ -1,3 +1,6 @@
+[![UI](https://img.shields.io/badge/User%20Interface-Link%20to%20UI-orange?style=flat-square&logo=appveyor)](https://www.figma.com/file/2VfxFGTk2FqLJiMExB7u9P/templa-rs?node-id=2%3A2)
+
+
 <p align="center"><img width="40%" src="https://hacktoberfest.digitalocean.com/_nuxt/img/logo-hacktoberfest-full.f42e3b1.svg"/></p>
 
 <p align="center">One Stop Solution for all boilerplate needs!</p>
@@ -5,9 +8,6 @@
 
 # Templa-rs
 Templa-rs is a one-of-a-kind TUI tool written in Rust, which helps you generate boilerplate templates for various types of projects and architectures in a matter of seconds!
-
-[![UI](https://img.shields.io/badge/User%20Interface-Link%20to%20UI-orange?style=flat-square&logo=appveyor)](https://www.figma.com/file/2VfxFGTk2FqLJiMExB7u9P/templa-rs?node-id=2%3A2)
-
 
 ![Templa-rs](https://imgur.com/4Xn9imn.gif)
 ## Built With
