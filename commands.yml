@@ -3,6 +3,11 @@ version: "1.0.0"
 author: IEEE-VIT. <contact@ieeevit.org>
 about: Solves all boilerplate template needs!
 args:
+    - first-query:
+        short: q
+        long: query
+        help: Specify the first query to search
+        takes_value: true
     - template-type:
         short: t
         long: type
