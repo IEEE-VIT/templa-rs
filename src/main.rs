@@ -9,8 +9,7 @@ mod size;
 mod tui;
 mod app;
 
-const SUBMODULES_URL: &str =
-    "https://api.github.com/repos/IEEE-VIT/templa-rs/contents/submodules.json";
+const SUBMODULES_URL: &str = "https://api.github.com/repos/IEEE-VIT/templa-rs/contents/submodules.json";
 
 fn fetch_submodules() -> Result<Vec<models::structs::Submodule>, Box<dyn std::error::Error>> {
     let client = Client::builder()

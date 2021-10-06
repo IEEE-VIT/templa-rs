@@ -1,6 +1,6 @@
 ![PR](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat&logo=github)
 ![Open Source](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)
-![](https://visitor-badge.glitch.me/badge?page_id=IEEE-VIT.IEEE-VIT)
+![Visitors](https://visitor-badge.glitch.me/badge?page_id=IEEE-VIT.IEEE-VIT)
 ![Issues](https://img.shields.io/github/issues/IEEE-VIT/templa-rs)
 ![License](https://img.shields.io/github/license/IEEE-VIT/templa-rs)
 ![Stars](https://img.shields.io/github/stars/IEEE-VIT/templa-rs)
@@ -20,7 +20,7 @@ Templa-rs is a one-of-a-kind TUI tool written in Rust, which helps you generate 
 
 ![Templa-rs](https://imgur.com/4Xn9imn.gif)
 ## Built With
-* Rust
+* [Rust](https://www.rust-lang.org/)
 * [tui-rs](https://github.com/fdehau/tui-rs)
 ## Getting Started
 * Fork it.
@@ -71,7 +71,7 @@ Open your forked repo in your browser and then raise a PR to the `master` branch
 
 
 ## Contributing
-To start contributing, check out [CONTRIBUTING.md](https://github.com/IEEE-VIT/Templa-rs/blob/master/CONTRIBUTING.md). New contributors are always welcome to support this project. If you want something gentle to start with, check out issues labelled as `easy` or `good-first-issue`. Check out issues labelled as `hacktoberfest` if you are up for some grabs! :) 
+To start contributing, check out [CONTRIBUTING.md](https://github.com/IEEE-VIT/Templa-rs/blob/master/CONTRIBUTING.md). New contributors are always welcome to support this project. If you want something gentle to start with, check out issues labelled as `difficulty-easy` or `good-first-issue`. Check out issues labelled as `hacktoberfest` if you are up for some grabs! :) 
 
 ## License
 This project is licensed under [MIT](https://github.com/IEEE-VIT/Templa-rs/blob/master/LICENSE.md).
