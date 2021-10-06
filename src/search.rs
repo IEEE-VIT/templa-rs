@@ -3,11 +3,12 @@ use crate::models::structs;
 
 pub fn perform_search(
     submodules: &[structs::Submodule],
-    key: String,
+    key: &str
 ) -> Result<Vec<structs::Submodule>, enums::Error> {
     let mut filtered_sm = vec![];
+
     for submodule in submodules.iter() {
-        if submodule.tags.contains(&key) {
+        if key.is_empty() || submodule.has_tag(key) {
             filtered_sm.push(submodule.clone());
         }
     }
