@@ -19,7 +19,7 @@ pub fn git_clone(proj_name: &str, url: String) -> Result<Repository, Error> {
 
     cb.transfer_progress(|stats| {
         let percentage_done = (stats.received_bytes() / 1000000) as f64  / (repo_size / 1000)  as f64;
-        progress_bar.set_progression((percentage_done * 100 as f64) as usize);
+        progress_bar.set_progression((percentage_done * 100.0) as usize);
         true
     });
 
@@ -28,9 +28,9 @@ pub fn git_clone(proj_name: &str, url: String) -> Result<Repository, Error> {
     let repo = RepoBuilder::new()
         .fetch_options(fo)
         .clone(&url, Path::new(&proj_name));
-    match repo {
-        Ok(_) => progress_bar.set_progression(100),
-        Err(_) => {}
-    };
+
+    if repo.is_ok() {
+        progress_bar.set_progression(100);
+    }
     repo
 }

@@ -31,11 +31,8 @@ fn fetch_submodules() -> Result<Vec<models::structs::Submodule>, Box<dyn std::er
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     let yaml = load_yaml!("../commands.yml");
     let matches = App::from(yaml).get_matches();
-    let mut key = String::new();
     let mut proj = String::new();
-    if let Some(template_name) = matches.value_of("template-type") {
-        key = String::from(template_name);
-    }
+
     if let Some(proj_name) = matches.value_of("name") {
         proj = String::from(proj_name);
     }
@@ -48,6 +45,6 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         }
     };
 
-    tui::render_tui(key, &proj, submodules);
+    tui::render_tui(&proj, submodules, matches.value_of("first-query"), matches.value_of("template-type"));
     Ok(())
 }

@@ -8,10 +8,12 @@ pub struct Submodule {
 }
 
 impl Submodule {
-    pub fn has_tag(&self, tag: &str) -> bool {
-        for t in self.tags.iter() {
-            if t == tag {
-                return true;
+    pub fn has_one_of_tags(&self, tags: &[&str]) -> bool {
+        for own_t in self.tags.iter() {
+            for t in tags.iter() {
+                if own_t == t {
+                    return true;
+                }
             }
         }
 
