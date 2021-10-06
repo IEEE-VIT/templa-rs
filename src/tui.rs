@@ -1,13 +1,12 @@
 use crate::command;
 use crate::models::{enums, structs::Submodule};
-use crate::search;
+use crate::app::App;
 use crossterm::{
     event::{self, Event as CEvent, KeyCode},
     execute,
     terminal::{disable_raw_mode, enable_raw_mode, EnterAlternateScreen, LeaveAlternateScreen},
 };
 use std::io;
-use std::io::Write;
 use std::str;
 use std::sync::mpsc;
 use std::thread;
@@ -21,10 +20,13 @@ use tui::{
     Terminal,
 };
 
-pub fn render_tui(key: String, proj_name: &str, submodules: &[Submodule]) {
+pub fn render_tui(key: String, proj_name: &str, submodules: Vec<Submodule>) {
     enable_raw_mode().expect("can run in raw mode");
     let mut stdout = io::stdout();
     execute!(stdout, EnterAlternateScreen).unwrap();
+
+    // App state container
+    let mut app = App::new(submodules);
 
     let (tx, rx) = mpsc::channel();
     let tick_rate = Duration::from_millis(200);
@@ -56,6 +58,8 @@ pub fn render_tui(key: String, proj_name: &str, submodules: &[Submodule]) {
     template_list_state.select(Some(0));
 
     loop {
+        app.search(&key);
+
         terminal
             .draw(|rect| {
                 let size = rect.size();
@@ -64,7 +68,8 @@ pub fn render_tui(key: String, proj_name: &str, submodules: &[Submodule]) {
                     .margin(2)
                     .constraints([Constraint::Percentage(80)].as_ref())
                     .split(size);
-                let template_list = render_templates(key.clone(), submodules);
+
+                let template_list = render_template_list(&app.filtered_submodules);
                 rect.render_stateful_widget(template_list, chunks[0], &mut template_list_state);
             })
             .unwrap();
@@ -79,7 +84,7 @@ pub fn render_tui(key: String, proj_name: &str, submodules: &[Submodule]) {
                 }
                 KeyCode::Down => {
                     if let Some(selected) = template_list_state.selected() {
-                        let templates_length = submodules.len();
+                        let templates_length = app.filtered_submodules.len();
                         if selected >= templates_length - 1 {
                             template_list_state.select(Some(0));
                         } else {
@@ -89,7 +94,7 @@ pub fn render_tui(key: String, proj_name: &str, submodules: &[Submodule]) {
                 }
                 KeyCode::Up => {
                     if let Some(selected) = template_list_state.selected() {
-                        let templates_length = submodules.len();
+                        let templates_length = app.filtered_submodules.len();
                         if selected > 0 {
                             template_list_state.select(Some(selected - 1));
                         } else {
@@ -99,8 +104,7 @@ pub fn render_tui(key: String, proj_name: &str, submodules: &[Submodule]) {
                 }
                 KeyCode::Enter => {
                     if let Some(_) = template_list_state.selected() {
-                        let templates = search::perform_search(submodules, key.clone())
-                            .expect("can fetch template list");
+                        let templates = &app.filtered_submodules;
                         let selected_template = templates
                             .get(
                                 template_list_state
@@ -115,10 +119,13 @@ pub fn render_tui(key: String, proj_name: &str, submodules: &[Submodule]) {
                         let output =
                             command::git_clone(proj_name, selected_template.url.to_string());
                         terminal.show_cursor().unwrap();
-                        if output.status.success() {
-                            println!("\nCloned {} successfully\n", &proj_name);
-                        } else {
-                            io::stderr().write_all(&output.stderr).unwrap();
+                        match output {
+                            Ok(_) => {
+                                println!("\nCloned the repo successfully")
+                            }
+                            Err(e) => {
+                                println!("{}", e)
+                            }
                         }
                         break;
                     }
@@ -130,15 +137,14 @@ pub fn render_tui(key: String, proj_name: &str, submodules: &[Submodule]) {
     }
 }
 
-fn render_templates<'a>(key: String, submodules: &[Submodule]) -> List<'a> {
+fn render_template_list<'a>(filtered_submodules: &[Submodule]) -> List<'a> {
     let pets = Block::default()
         .borders(Borders::ALL)
         .style(Style::default().fg(Color::White))
         .title("Available Templates")
         .border_type(BorderType::Plain);
 
-    let filtered_template_list = search::perform_search(submodules, key).expect("can filter json");
-    let items: Vec<_> = filtered_template_list
+    let items: Vec<_> = filtered_submodules
         .iter()
         .map(|submodule| {
             ListItem::new(Spans::from(vec![Span::styled(

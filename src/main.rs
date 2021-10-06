@@ -5,7 +5,9 @@ use serde_json::Value;
 mod command;
 mod models;
 mod search;
+mod size;
 mod tui;
+mod app;
 
 const SUBMODULES_URL: &str =
     "https://api.github.com/repos/IEEE-VIT/templa-rs/contents/submodules.json";
@@ -47,6 +49,6 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         }
     };
 
-    tui::render_tui(key, &proj, &submodules);
+    tui::render_tui(key, &proj, submodules);
     Ok(())
 }
