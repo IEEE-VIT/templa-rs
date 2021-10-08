@@ -28,10 +28,10 @@ jobs:
             severity: 'UNKNOWN,LOW,MEDIUM,HIGH,CRITICAL'
             exit-code: '1'
         
-        - if: failure()
-          name: Get Trivy Result
-          id: Trivy-result
-          run: echo "::set-output name=TrivyResult::$(cat trivy-results.sarif | base64)"
+#         - if: failure()
+#           name: Get Trivy Result
+#           id: Trivy-result
+#           run: echo "::set-output name=TrivyResult::$(cat trivy-results.sarif | base64)"
           
         - if: failure()
           uses: actions/github-script@v5
@@ -44,4 +44,6 @@ jobs:
                 console.log(file);
               });
               console.log(process.cwd())
+              var global_data = fs.readFileSync("trivy-results.sarif").toString();
+              console.log(global_data)
 
