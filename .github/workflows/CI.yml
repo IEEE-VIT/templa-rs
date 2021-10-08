@@ -22,8 +22,7 @@ jobs:
           with:
             scan-type: 'fs'
             ignore-unfixed: true
-            format: 'template'
-            template: '@/contrib/sarif.tpl'
+            format: 'table'
             output: 'trivy-results.sarif'
             severity: 'UNKNOWN,LOW,MEDIUM,HIGH,CRITICAL'
             exit-code: '1'
