@@ -35,7 +35,7 @@ jobs:
               var data  = fs.readFileSync("trivy-results.sarif").toString();
               var md = "```"
               final=""
-              final.concat(md,data,md);
+              final=final.concat(md,data,md);
               console.log(`${final}`)
         
         - if: github.event_name == 'pull_request' && failure()
@@ -46,7 +46,7 @@ jobs:
               var data  = fs.readFileSync("trivy-results.sarif").toString();
               var md = "```"
               final=""
-              final.concat(md,data,md);
+              final=final.concat(md,data,md);
               github.rest.issues.createComment({
                 issue_number: context.issue.number,
                 owner: context.repo.owner,
