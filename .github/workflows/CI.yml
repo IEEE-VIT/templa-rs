@@ -32,7 +32,9 @@ jobs:
           name: Get Trivy Result
           id: Trivy-result
           run: echo "::set-output name=TrivyResult::$(cat trivy-results.sarif | base64)"
-        - run: npm install atob --save
+          
+        - if: failure()
+          run: npm install atob --save
           
         - if: github.event_name == 'pull_request' && failure()
           uses: actions/github-script@v5
