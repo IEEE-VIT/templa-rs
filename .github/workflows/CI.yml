@@ -1,0 +1,49 @@
+name: CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  Vulnerability-test:
+      runs-on: ubuntu-latest
+      steps:
+        - name: Checkout code
+          uses: actions/checkout@v2
+          
+        - name: Run Trivy vulnerability scanner in repo mode
+          uses: aquasecurity/trivy-action@master
+          id: Trivy
+          with:
+            scan-type: 'fs'
+            ignore-unfixed: true
+            format: 'template'
+            template: '@/contrib/sarif.tpl'
+            output: 'trivy-results.sarif'
+            severity: 'UNKNOWN,LOW,MEDIUM,HIGH,CRITICAL'
+            exit-code: '1'
+        
+        - if: failure()
+          name: Get Trivy Result
+          id: Trivy-result
+          run: echo "::set-output name=TrivyResult::$(cat trivy-results.sarif | base64)"
+          
+          
+        - if: github.event_name == 'pull_request' && failure()
+          uses: actions/github-script@v5
+          with:
+            script: |
+              var decoded=${{steps.Trivy-result.outputs.TrivyResult}}
+              console.log(decoded)
+              var decodedStr = atob(decoded);
+              github.rest.issues.createComment({
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body: `${decodedStr}`
+              })
