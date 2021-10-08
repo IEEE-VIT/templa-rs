@@ -40,7 +40,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let submodules = match fetch_submodules() {
         Ok(s) => s,
         Err(e) => {
-            eprintln!("Could not load submodules from GitHub: {}", e);
+            eprintln!("Could not load submodules from GitHub : {}", e);
             return Ok(());
         }
     };
