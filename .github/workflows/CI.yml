@@ -27,17 +27,6 @@ jobs:
             severity: 'UNKNOWN,LOW,MEDIUM,HIGH,CRITICAL'
             exit-code: '1'
         
-        - if: failure()
-          uses: actions/github-script@v5
-          with:
-            script: |
-              const fs = require('fs');
-              var data  = fs.readFileSync("trivy-results.sarif").toString();
-              var md = "```"
-              final=""
-              final=final.concat(md,data,md);
-              console.log(`${final}`)
-        
         - if: github.event_name == 'pull_request' && failure()
           uses: actions/github-script@v5
           with:
@@ -45,11 +34,11 @@ jobs:
               const fs = require('fs');
               var data  = fs.readFileSync("trivy-results.sarif").toString();
               var md = "```"
-              final=""
-              final=final.concat(md,data,md);
+              Trivy-result=""
+              Trivy-result=Trivy-result.concat(md,data,md);
               github.rest.issues.createComment({
                 issue_number: context.issue.number,
                 owner: context.repo.owner,
                 repo: context.repo.repo,
-                body: `${final}`
+                body: `# Vulnerability Found!<br/>${Trivy-result}`
               })             
