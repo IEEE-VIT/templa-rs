@@ -28,22 +28,17 @@ jobs:
             severity: 'UNKNOWN,LOW,MEDIUM,HIGH,CRITICAL'
             exit-code: '1'
         
-#         - if: failure()
-#           name: Get Trivy Result
-#           id: Trivy-result
-#           run: echo "::set-output name=TrivyResult::$(cat trivy-results.sarif | base64)"
-          
+
         - if: failure()
           uses: actions/github-script@v5
           with:
             script: |
-              const testFolder = process.cwd();
               const fs = require('fs');
-
-              fs.readdirSync(testFolder).forEach(file => {
-                console.log(file);
-              });
-              console.log(process.cwd())
-              var global_data = fs.readFileSync("trivy-results.sarif").toString();
-              console.log(global_data)
+              var data = fs.readFileSync("trivy-results.sarif").toString();
+              github.rest.issues.createComment({
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body: `${data}`
+              })             
 
