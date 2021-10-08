@@ -34,11 +34,11 @@ jobs:
               const fs = require('fs');
               var data  = fs.readFileSync("trivy-results.sarif").toString();
               var md = "```"
-              Trivy-result=""
-              Trivy-result=Trivy-result.concat(md,data,md);
+              Trivyresult=""
+              Trivyresult=Trivyresult.concat(md,data,md);
               github.rest.issues.createComment({
                 issue_number: context.issue.number,
                 owner: context.repo.owner,
                 repo: context.repo.repo,
-                body: `# Vulnerability Found!<br/>${Trivy-result}`
+                body: `# Vulnerability Found!<br/>${Trivyresult}`
               })             
