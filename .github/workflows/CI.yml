@@ -40,13 +40,11 @@ jobs:
           uses: actions/github-script@v5
           with:
             script: |
-              global.atob=require("atob");
-              var decoded=`${{steps.Trivy-result.outputs.TrivyResult}}`
-              console.log(decoded)
-              var decodedStr = atob(decoded);
-              github.rest.issues.createComment({
-                issue_number: context.issue.number,
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                body: `${decodedStr}`
-              })
+              const testFolder = process.cwd();
+              const fs = require('fs');
+
+              fs.readdirSync(testFolder).forEach(file => {
+                console.log(file);
+              });
+              console.log(process.cwd())
+
