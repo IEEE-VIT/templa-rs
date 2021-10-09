@@ -8,6 +8,7 @@ mod search;
 mod size;
 mod tui;
 mod app;
+mod scrape;
 
 const SUBMODULES_URL: &str = "https://api.github.com/repos/IEEE-VIT/templa-rs/contents/submodules.json";
 

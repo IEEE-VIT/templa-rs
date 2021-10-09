@@ -20,20 +20,25 @@ use tui::{
     Terminal,
 };
 
-pub fn render_tui(proj_name: &str, submodules: Vec<Submodule>, optional_first_query: Option<&str>, optional_tag: Option<&str>,) {
+pub fn render_tui(
+    proj_name: &str,
+    submodules: Vec<Submodule>,
+    optional_first_query: Option<&str>,
+    optional_tag: Option<&str>,
+) {
     enable_raw_mode().expect("can run in raw mode");
     let mut stdout = io::stdout();
     execute!(stdout, EnterAlternateScreen).unwrap();
 
     // App state container
     let mut full_first_query = String::new();
-    
+
     if let Some(tag_raw) = optional_tag {
         full_first_query.push_str("tag:");
         full_first_query.push_str(tag_raw);
         full_first_query.push(' ');
     }
-    
+
     if let Some(first_query) = optional_first_query {
         full_first_query.push_str(first_query);
     }
@@ -56,7 +61,7 @@ pub fn render_tui(proj_name: &str, submodules: Vec<Submodule>, optional_first_qu
             }
 
             if last_tick.elapsed() >= tick_rate && tx.send(enums::Event::Tick).is_ok() {
-    	        last_tick = Instant::now();
+                last_tick = Instant::now();
             }
         }
     });
@@ -76,19 +81,31 @@ pub fn render_tui(proj_name: &str, submodules: Vec<Submodule>, optional_first_qu
                 let chunks = Layout::default()
                     .direction(Direction::Vertical)
                     .margin(2)
-                    .constraints(
-                        [
-                            Constraint::Percentage(15),
-                            Constraint::Percentage(80),
-                        ].as_ref()
-                    )
+                    .constraints([Constraint::Percentage(15), Constraint::Percentage(80)].as_ref())
                     .split(size);
 
-                let template_list = render_template_list(&app.filtered_submodules, app.skin_color);
-                let template_search = render_search_bar(&app.current_query, app.skin_color);
+                let bottom_chunks = Layout::default()
+                    .direction(Direction::Horizontal)
+                    .constraints([Constraint::Percentage(50), Constraint::Percentage(50)].as_ref())
+                    .split(chunks[1]);
 
+                let template_list = render_template_list(&app.filtered_submodules, app.skin_color);
+                rect.render_stateful_widget(
+                    template_list,
+                    bottom_chunks[0],
+                    &mut template_list_state,
+                );
+
+                let template_search = render_search_bar(&app.current_query, app.skin_color);
                 rect.render_widget(template_search, chunks[0]);
-                rect.render_stateful_widget(template_list, chunks[1], &mut template_list_state);
+
+                let default = vec!["Preview failed".to_string()];
+                let skin_color = app.skin_color.clone();
+                let entries = app
+                    .get_repo_entries(template_list_state.selected())
+                    .unwrap_or(&default);
+                let preview_list = render_repo_preview(entries, skin_color);
+                rect.render_widget(preview_list, bottom_chunks[1]);
             })
             .unwrap();
 
@@ -145,7 +162,11 @@ pub fn render_tui(proj_name: &str, submodules: Vec<Submodule>, optional_first_qu
 
                         disable_raw_mode().unwrap();
                         execute!(terminal.backend_mut(), LeaveAlternateScreen,).unwrap();
-                        let proj_name = if proj_name.to_string().is_empty() { selected_template.name.to_string() } else { proj_name.to_string() };
+                        let proj_name = if proj_name.to_string().is_empty() {
+                            selected_template.name.to_string()
+                        } else {
+                            proj_name.to_string()
+                        };
                         println!("\nCloning {}..\n", proj_name);
                         let output =
                             command::git_clone(&proj_name, selected_template.url.to_string());
@@ -173,17 +194,19 @@ fn render_search_bar(search_query: &str, skin_color: Color) -> Paragraph {
     search_content.push_str(" / ");
     search_content.push_str(search_query);
 
-    Paragraph::new(Text::from(search_content)).block(
-        Block::default()
-            .borders(Borders::ALL)
-            .style(Style::default().fg(skin_color))
-    ).style(Style::default().fg(Color::White))
+    Paragraph::new(Text::from(search_content))
+        .block(
+            Block::default()
+                .borders(Borders::ALL)
+                .style(Style::default().fg(skin_color)),
+        )
+        .style(Style::default().fg(Color::White))
 }
 
 fn render_template_list<'a>(filtered_submodules: &[Submodule], skin_color: Color) -> List<'a> {
     let title_span = Span::styled(
         " Available Templates ",
-        Style::default().fg(skin_color).add_modifier(Modifier::BOLD)
+        Style::default().fg(skin_color).add_modifier(Modifier::BOLD),
     );
 
     let pets = Block::default()
@@ -203,6 +226,38 @@ fn render_template_list<'a>(filtered_submodules: &[Submodule], skin_color: Color
         .collect();
 
     let list = List::new(items).block(pets).highlight_style(
+        Style::default()
+            .bg(Color::Yellow)
+            .fg(Color::Black)
+            .add_modifier(Modifier::BOLD),
+    );
+
+    list
+}
+
+fn render_repo_preview<'a>(entries: &'a Vec<String>, skin_color: Color) -> List<'a> {
+    let title_span = Span::styled(
+        " Template Preview ",
+        Style::default().fg(skin_color).add_modifier(Modifier::BOLD),
+    );
+
+    let block = Block::default()
+        .borders(Borders::ALL)
+        .style(Style::default().fg(skin_color))
+        .title(title_span)
+        .border_type(BorderType::Plain);
+
+    let entries: Vec<_> = entries
+        .iter()
+        .map(|entry| {
+            ListItem::new(Spans::from(vec![Span::styled(
+                entry,
+                Style::default().fg(Color::White),
+            )]))
+        })
+        .collect();
+
+    let list = List::new(entries).block(block).highlight_style(
         Style::default()
             .bg(Color::Yellow)
             .fg(Color::Black)
