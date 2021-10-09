@@ -1,0 +1,42 @@
+name: CI_pull
+
+on:
+  pull_request:
+    branches: [master]
+  
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  Vulnerability-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Run Trivy vulnerability scanner in repo mode
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: "fs"
+          ignore-unfixed: true
+          format: "table"
+          output: "Trivy-table"
+          severity: "LOW,MEDIUM,HIGH,CRITICAL"
+          exit-code: "1"
+
+      - if: failure()
+        uses: actions/github-script@v5
+        with:
+          script: |
+            var data  = require('fs').readFileSync("Trivy-table").toString();
+            Trivyresult=""
+            Trivyresult=Trivyresult.concat("```",data,"```");
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `
+              # Vulnerability Found!
+              ${Trivyresult}
+              `
+            })
