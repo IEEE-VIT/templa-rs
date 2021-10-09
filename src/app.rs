@@ -66,7 +66,7 @@ impl App {
     }
 
     pub fn get_repo_entries(&mut self, index: Option<usize>) -> Option<&Vec<String>> {
-        let url = &self.filtered_submodules[index?].url;
+        let url = &self.filtered_submodules.get(index?)?.url;
         if !self.entries_cache.contains_key(url) {
             // TODO Move this to another thread to not block the main thread
             let entries = scrape::scrape_github_repo(&url)?;

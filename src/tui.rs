@@ -99,7 +99,7 @@ pub fn render_tui(
                 let template_search = render_search_bar(&app.current_query, app.skin_color);
                 rect.render_widget(template_search, chunks[0]);
 
-                let default = vec!["Preview failed".to_string()];
+                let default = vec![];
                 let skin_color = app.skin_color.clone();
                 let entries = app
                     .get_repo_entries(template_list_state.selected())
