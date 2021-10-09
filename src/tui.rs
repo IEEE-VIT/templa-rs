@@ -100,7 +100,7 @@ pub fn render_tui(
                 rect.render_widget(template_search, chunks[0]);
 
                 let default = vec![];
-                let skin_color = app.skin_color.clone();
+                let skin_color = app.skin_color;
                 let entries = app
                     .get_repo_entries(template_list_state.selected())
                     .unwrap_or(&default);
@@ -235,7 +235,7 @@ fn render_template_list<'a>(filtered_submodules: &[Submodule], skin_color: Color
     list
 }
 
-fn render_repo_preview<'a>(entries: &'a Vec<String>, skin_color: Color) -> List<'a> {
+fn render_repo_preview(entries: &[String], skin_color: Color) -> List {
     let title_span = Span::styled(
         " Template Preview ",
         Style::default().fg(skin_color).add_modifier(Modifier::BOLD),
