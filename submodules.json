@@ -70,8 +70,8 @@
     "tags": ["ios", "app-dev", "storyboard"]
   },
   {
-    "name": "nodejs-react-boilerplate",
-    "url": "https://github.com/CKGrafico/Frontend-Boilerplates",
-    "tags": ["ES6", "Vue", "React", "Nuxt", "TypeScript", "SCSS", "Nodejs","Fronted"]
+    "name": "nodejs-boilerplate",
+    "url": "https://github.com/sahat/hackathon-starter",
+    "tags": ["Nodejs","Fronted"]
   }
 ]
