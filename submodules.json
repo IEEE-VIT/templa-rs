@@ -83,6 +83,15 @@
     "name": "dotnet-api-boilerplate",
     "url": "https://github.com/yanpitangui/dotnet-api-boilerplate",
     "tags": ["dontnet-api", "mssql", "dotnetcore", "api"]
+  },
+  {
+    "name": "rust-web-boilerplate",
+    "url": "https://github.com/svenstaro/rust-web-boilerplate",
+    "tags": ["rust", "rocket", "diesel"]
+  },
+  {
+    "name": "rust-webpack-template",
+    "url": "https://github.com/rustwasm/rust-webpack-template",
+    "tags": ["rust", "wasm", "webassembly", "webpack"]
   }
-  
 ]
