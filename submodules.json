@@ -68,5 +68,15 @@
     "name": "ios-boilerplate",
     "url": "https://github.com/rootstrap/ios-base",
     "tags": ["ios", "app-dev", "storyboard"]
+  },
+  {
+    "name": "rust-web-boilerplate",
+    "url": "https://github.com/svenstaro/rust-web-boilerplate",
+    "tags": ["rust", "rocket", "diesel"]
+  },
+  {
+    "name": "rust-webpack-template",
+    "url": "https://github.com/rustwasm/rust-webpack-template",
+    "tags": ["rust", "wasm", "webassembly", "webpack"]
   }
 ]
