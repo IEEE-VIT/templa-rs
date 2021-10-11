@@ -1,8 +1,5 @@
 use crate::models::enums;
 use crate::models::structs;
-use crate::models::structs::Submodule;
-use std::time::{Duration, Instant};
-use std::thread::sleep;
 
 pub fn perform_search(
     submodules: &[structs::Submodule],
