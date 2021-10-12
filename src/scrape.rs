@@ -2,11 +2,12 @@ use select::document::Document;
 use select::predicate::{Class, Name};
 use std::collections::{HashMap, HashSet};
 use std::sync::mpsc::{self, Receiver, Sender};
-use std::thread;
+use threadpool::ThreadPool;
 
 pub struct EntriesCache {
     cache: HashMap<String, Vec<String>>,
     ongoing_requests: HashSet<String>,
+    threadpool: ThreadPool,
     rx: Receiver<(String, Vec<String>)>,
     tx: Sender<(String, Vec<String>)>,
 }
@@ -17,6 +18,7 @@ impl EntriesCache {
         Self {
             cache: HashMap::new(),
             ongoing_requests: HashSet::new(),
+            threadpool: ThreadPool::new(num_cpus::get()),
             rx,
             tx,
         }
@@ -34,7 +36,7 @@ impl EntriesCache {
 
             let tx = self.tx.clone();
             let url = url.to_string();
-            thread::spawn(move || {
+            self.threadpool.execute(move || {
                 let entries = scrape_github_repo(&url);
                 tx.send((url, entries)).unwrap();
             });
