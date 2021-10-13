@@ -73,5 +73,30 @@
     "name": "nodejs-boilerplate",
     "url": "https://github.com/sahat/hackathon-starter",
     "tags": ["Nodejs","Frontend","hackathon-starter","hackathon","pug","web-dev"]
+  },
+  {
+    "name": "laravel-boilerplate",
+    "url": "https://github.com/rappasoft/laravel-boilerplate",
+    "tags": ["php", "laravel", "php-template"]
+  },
+  {
+    "name": "aspnet-boilerplate",
+    "url": "https://github.com/aspnetboilerplate/aspnetboilerplate",
+    "tags": ["csharp", "aspnet", "framework"]
+  },
+  {
+    "name": "dotnet-api-boilerplate",
+    "url": "https://github.com/yanpitangui/dotnet-api-boilerplate",
+    "tags": ["dontnet-api", "mssql", "dotnetcore", "api"]
+  },
+  {
+    "name": "rust-web-boilerplate",
+    "url": "https://github.com/svenstaro/rust-web-boilerplate",
+    "tags": ["rust", "rocket", "diesel"]
+  },
+  {
+    "name": "rust-webpack-template",
+    "url": "https://github.com/rustwasm/rust-webpack-template",
+    "tags": ["rust", "wasm", "webassembly", "webpack"]
   }
 ]

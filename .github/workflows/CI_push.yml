@@ -1,0 +1,31 @@
+name: CI_push
+
+on:
+  push:
+    branches: [ master ]
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+
+  Upload-result:
+      runs-on: ubuntu-latest
+      steps:
+        - name: Checkout code
+          uses: actions/checkout@v2
+          
+        - name: Run Trivy vulnerability scanner in repo mode
+          uses: aquasecurity/trivy-action@master
+          with:
+            scan-type: 'fs'
+            ignore-unfixed: true
+            format: 'template'
+            output: 'trivy-results.sarif'
+            template: '@/contrib/sarif.tpl'
+            severity: 'LOW,MEDIUM,HIGH,CRITICAL'
+      
+        - name: Upload Trivy scan results to GitHub Security-tab
+          uses: github/codeql-action/upload-sarif@v1
+          with:
+           sarif_file: 'trivy-results.sarif'
