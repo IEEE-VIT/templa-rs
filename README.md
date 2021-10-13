@@ -19,50 +19,50 @@
 Templa-rs is a one-of-a-kind TUI tool written in Rust, which helps you generate boilerplate templates for various types of projects and architectures in a matter of seconds!
 
 ![Templa-rs](https://imgur.com/4Xn9imn.gif)
+
+## Usage
+1) Download templa-rs [here](https://github.com/IEEE-VIT/templa-rs/releases)
+2) Find the boilerplate you want
+3) Press [ENTER] to select it
+4) Start Coding
+
+You can also use Live Search to narrow down the hunt
+
+## Live Search
+Templa-rs boilerplate is expanding rapidly. Live Search is a tool that lets you narrow down your search for the boilerplate you need, while also remaining inside the TUI at all times saving you time.
+
+### Live Search Features:
+* One way to use Live Search is to simply type a search term such as `php`, this will then show you all the boilerplates with `php` in their name
+* `TAG:` Tag allows you to each for a specific catagory of boilerplates (e.g. `TAG:backend`), using multiple tags may narrow down your search further
+More methods to narrow down your search may be coming in the future so keep your eyes out!
+
 ## Built With
 * [Rust](https://www.rust-lang.org/)
 * [tui-rs](https://github.com/fdehau/tui-rs)
-## Getting Started
-* Fork it.
 
-* Clone your forked repo and move inside it:
-
+## Getting Started Contributing
+Got a great new feature or a boilerplate you want to add? Why not contribute to the project:
+1) Fork it.
+2) Clone your forked repo and move inside it:
 ```
-git clone https://github.com/IEEE-VIT/Templa-rs.git && cd Templa-rs
+git clone https://github.com/{your-username}/templa-rs.git && cd templa-rs
 ```
-
-* Checkout to a new branch to work on an issue:
-
+3) Checkout to a new branch to work on an issue:
 ```
 git checkout -b my-amazing-feature
 ```
-
-* Run It Locally
-
+4) Run It Locally
 ```
-cargo run -- -h
+cargo run
 ```
-```
-cargo run -- --help
-```
-```
-cargo run -- -t <type_of_project> -n <project_name>
-```
-```
-cargo run -- --type <type_of_project> --name <project_name>
-```
-
-* Once you're all done coding, it's time to open a PR :)
+5) Once you're all done coding, it's time to open a PR :)
 Run the following commands from the root of the project directory:
-
 ```
 git add .
 ```
-
 ```
 git commit -m "A short description about the feature."
 ```
-
 ```
 git push origin <my-amazing-feature>
 ```
