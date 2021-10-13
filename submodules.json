@@ -70,6 +70,11 @@
     "tags": ["ios", "app-dev", "storyboard"]
   },
   {
+    "name": "nodejs-boilerplate",
+    "url": "https://github.com/sahat/hackathon-starter",
+    "tags": ["Nodejs","Frontend","hackathon-starter","hackathon","pug","web-dev"]
+  },
+  {
     "name": "laravel-boilerplate",
     "url": "https://github.com/rappasoft/laravel-boilerplate",
     "tags": ["php", "laravel", "php-template"]
