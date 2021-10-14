@@ -93,5 +93,10 @@
     "name": "rust-webpack-template",
     "url": "https://github.com/rustwasm/rust-webpack-template",
     "tags": ["rust", "wasm", "webassembly", "webpack"]
+  },
+  {
+    "name": "next-js-boilerplate",
+    "url": "https://github.com/ixartz/Next-js-Boilerplate",
+    "tags": ["next", "nextjs", "react", "reactjs", "tailwind", "typescript"]
   }
 ]
