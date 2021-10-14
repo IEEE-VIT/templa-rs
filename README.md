@@ -15,6 +15,15 @@
 <p align="center">One Stop Solution for all boilerplate needs!</p>
 <p align="center">Consider leaving a :star: if you found the project helpful.</p>
 
+```
+████████╗███████╗███╗   ███╗██████╗ ██╗      █████╗     ██████╗ ███████╗
+╚══██╔══╝██╔════╝████╗ ████║██╔══██╗██║     ██╔══██╗    ██╔══██╗██╔════╝
+   ██║   █████╗  ██╔████╔██║██████╔╝██║     ███████║    ██████╔╝███████╗
+   ██║   ██╔══╝  ██║╚██╔╝██║██╔═══╝ ██║     ██╔══██║    ██╔══██╗╚════██║
+   ██║   ███████╗██║ ╚═╝ ██║██║     ███████╗██║  ██║    ██║  ██║███████║
+   ╚═╝   ╚══════╝╚═╝     ╚═╝╚═╝     ╚══════╝╚═╝  ╚═╝    ╚═╝  ╚═╝╚══════╝
+```
+
 # Templa-rs
 Templa-rs is a one-of-a-kind TUI tool written in Rust, which helps you generate boilerplate templates for various types of projects and architectures in a matter of seconds!
 
@@ -29,7 +38,7 @@ Templa-rs is a one-of-a-kind TUI tool written in Rust, which helps you generate 
 You can also use Live Search to narrow down the hunt
 
 ## Live Search
-Templa-rs boilerplate is expanding rapidly. Live Search is a tool that lets you narrow down your search for the boilerplate you need, while also remaining inside the TUI at all times saving you time.
+Live Search is a tool that lets you narrow down your search for the boilerplate you need, while also remaining inside the TUI at all times saving you time.
 
 ### Live Search Features:
 * One way to use Live Search is to simply type a search term such as `php`, this will then show you all the boilerplates with `php` in their name
