@@ -42,12 +42,6 @@ If you wish to use CLI queries:
 5) Run `sudo make install`
 6) Finally, run `templa-rs [OPTIONS]`
 
-#### macOS
-
-####
-
-You can also use Live Search to narrow down the hunt
-
 ## Live Search
 Live Search is a tool that lets you narrow down your search for the boilerplate you need, while also remaining inside the TUI at all times saving you time.
 
