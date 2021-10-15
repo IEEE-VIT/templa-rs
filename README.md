@@ -31,9 +31,29 @@ Templa-rs is a one-of-a-kind TUI tool written in Rust, which helps you generate 
 
 ## Usage
 1) Download templa-rs [here](https://github.com/IEEE-VIT/templa-rs/releases)
-2) Find the boilerplate you want
-3) Press [ENTER] to select it
-4) Start Coding
+2) Run templa-rs
+3) Find the boilerplate you want
+4) Press [ENTER] to select it
+5) Start Coding
+
+### Running templa-rs
+#### Windows
+If you only wish to use Live Search you can run templa-rs on Windows by simply double clicking the `exe` file.
+If you wish to use CLI queries:
+1) Open a Terminal Window in the file that the executable is in 
+2) Run `./templa-rs.exe [OPTIONS]`
+
+#### Linux and macOS
+1) Open a Terminal window in the directory that templa-rs is in
+2) Run `tar -zxvf {templa-file-name}.tar.gz`
+3) Run `./configure`
+4) Run `make`
+5) Run `sudo make install`
+6) Finally, run `templa-rs [OPTIONS]`
+
+#### macOS
+
+####
 
 You can also use Live Search to narrow down the hunt
 
