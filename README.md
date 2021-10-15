@@ -45,6 +45,11 @@ Live Search is a tool that lets you narrow down your search for the boilerplate 
 * `TAG:` Tag allows you to each for a specific catagory of boilerplates (e.g. `TAG:backend`), using multiple tags may narrow down your search further
 More methods to narrow down your search may be coming in the future so keep your eyes out!
 
+## Command Line Queries
+You can also use queries directly from the command line to refine your search:
+
+![image](https://i.imgur.com/tTBXG6A.png)
+
 ## Built With
 * [Rust](https://www.rust-lang.org/)
 * [tui-rs](https://github.com/fdehau/tui-rs)
