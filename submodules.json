@@ -103,5 +103,10 @@
     "name": "next-js-boilerplate",
     "url": "https://github.com/ixartz/Next-js-Boilerplate",
     "tags": ["next", "nextjs", "react", "reactjs", "tailwind", "typescript"]
+  },
+  {
+    "name": "flutter-boilerplate",
+    "url": "https://github.com/zubairehman/flutter-boilerplate-project",
+    "tags": ["flutter", "app-dev", "dart"]
   }
 ]
