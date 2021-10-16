@@ -68,5 +68,45 @@
     "name": "ios-boilerplate",
     "url": "https://github.com/rootstrap/ios-base",
     "tags": ["ios", "app-dev", "storyboard"]
+  },
+  {
+    "name": "nodejs-boilerplate",
+    "url": "https://github.com/sahat/hackathon-starter",
+    "tags": ["Nodejs","Frontend","hackathon-starter","hackathon","pug","web-dev"]
+  },
+  {
+    "name": "laravel-boilerplate",
+    "url": "https://github.com/rappasoft/laravel-boilerplate",
+    "tags": ["php", "laravel", "php-template"]
+  },
+  {
+    "name": "aspnet-boilerplate",
+    "url": "https://github.com/aspnetboilerplate/aspnetboilerplate",
+    "tags": ["csharp", "aspnet", "framework"]
+  },
+  {
+    "name": "dotnet-api-boilerplate",
+    "url": "https://github.com/yanpitangui/dotnet-api-boilerplate",
+    "tags": ["dontnet-api", "mssql", "dotnetcore", "api"]
+  },
+  {
+    "name": "rust-web-boilerplate",
+    "url": "https://github.com/svenstaro/rust-web-boilerplate",
+    "tags": ["rust", "rocket", "diesel"]
+  },
+  {
+    "name": "rust-webpack-template",
+    "url": "https://github.com/rustwasm/rust-webpack-template",
+    "tags": ["rust", "wasm", "webassembly", "webpack"]
+  },
+  {
+    "name": "next-js-boilerplate",
+    "url": "https://github.com/ixartz/Next-js-Boilerplate",
+    "tags": ["next", "nextjs", "react", "reactjs", "tailwind", "typescript"]
+  },
+  {
+    "name": "flutter-boilerplate",
+    "url": "https://github.com/zubairehman/flutter-boilerplate-project",
+    "tags": ["flutter", "app-dev", "dart"]
   }
 ]
