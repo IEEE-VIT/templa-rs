@@ -10,7 +10,7 @@
 ![Maintained](https://img.shields.io/maintenance/yes/2021)
 [![UI](https://img.shields.io/badge/User%20Interface-Link%20to%20UI-orange?style=flat-square&logo=appveyor)](https://www.figma.com/file/2VfxFGTk2FqLJiMExB7u9P/templa-rs?node-id=2%3A2)
 
-<p align="center"><img width="60%" src="https://i.imgur.com/tLvPX2F.png"/></p>
+<p align="center"><img width="80%" src="https://i.imgur.com/tLvPX2F.png"/></p>
 
 <p align="center">One Stop Solution for all boilerplate needs!</p>
 <p align="center">Consider leaving a :star: if you found the project helpful.</p>
@@ -26,6 +26,8 @@ Templa-rs is a one-of-a-kind TUI tool written in Rust, which helps you generate 
 3) Find the boilerplate you want
 4) Press [ENTER] to select it
 5) Start Coding
+
+You can exit the program at any time using `Ctrl+C`
 
 ### Running templa-rs
 #### Windows
