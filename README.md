@@ -18,7 +18,7 @@
 # Templa-rs
 Templa-rs is a one-of-a-kind TUI tool written in Rust, which helps you generate boilerplate templates for various types of projects and architectures in a matter of seconds!
 
-![Templa-rs](https://imgur.com/4Xn9imn.gif)
+![Templa-rs](https://i.imgur.com/H2YjBSr.gif)
 
 ## Usage
 1) Download templa-rs [here](https://github.com/IEEE-VIT/templa-rs/releases)
@@ -48,7 +48,8 @@ Live Search is a tool that lets you narrow down your search for the boilerplate 
 
 #### Live Search Features:
 * One way to use Live Search is to simply type a search term such as `php`, this will then show you all the boilerplates with `php` in their name
-* `TAG:` Tag allows you to each for a specific catagory of boilerplates (e.g. `TAG:backend`), using multiple tags may narrow down your search further
+* `TAG:` Tag allows you to search each boilerplate for a specific catagory of boilerplates (e.g. `TAG:backend`), using multiple tags may narrow down your search further
+
 More methods to narrow down your search may be coming in the future so keep your eyes out!
 
 ### Command Line Queries
