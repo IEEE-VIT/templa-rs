@@ -108,5 +108,21 @@
     "name": "flutter-boilerplate",
     "url": "https://github.com/zubairehman/flutter-boilerplate-project",
     "tags": ["flutter", "app-dev", "dart"]
+  },
+  {
+    "name": "django-react-boilerplate",
+    "url": "https://github.com/vintasoftware/django-react-boilerplate",
+    "tags": ["django-react", "django", "react","react-js"]
+  },
+  {
+    "name": "django-angular-boilerplate",
+    "url": "https://github.com/lolripgg/thinkster-django-angular-boilerplate",
+    "tags": ["django-angular", "django", "angular","angular-js"]
+  },
+  {
+    "name": "wordpress-boilerplate",
+    "url": "https://github.com/DevinVinson/WordPress-Plugin-Boilerplate",
+    "tags": ["wordpress", "website", "wordpress-plugin","web"]
   }
+  
 ]
