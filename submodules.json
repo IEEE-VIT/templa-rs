@@ -20,6 +20,16 @@
     "tags": ["jquery", "jqueryjs", "js"]
   },
   {
+    "name": "kotlin-android-template",
+    "url":  "https://github.com/cortinico/kotlin-android-template",
+    "tags": ["android", "gradle", "kotlin" ]
+  },
+  {
+    "name": "kotlin-gradle-plugin-template",
+    "url":  "https://github.com/cortinico/kotlin-gradle-plugin-template",
+    "tags": ["gradle", "gradle-plugin", "kotlin", "plugin"]
+  },
+  {
     "name": "nginx-boilerplate",
     "url": "https://github.com/nginx-boilerplate/nginx-boilerplate",
     "tags": ["nginx"]
