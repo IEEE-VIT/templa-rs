@@ -133,5 +133,15 @@
     "name": "wordpress-boilerplate",
     "url": "https://github.com/DevinVinson/WordPress-Plugin-Boilerplate",
     "tags": ["wordpress", "website", "wordpress-plugin","web"]
+  },
+  {
+    "name": "hackathon-starter",
+    "url": "https://github.com/sahat/hackathon-starter",
+    "tags": ["nodejs", "oauth2", "hackathon"]
+  },
+  {
+    "name": "django-hackathon-starter",
+    "url": "https://github.com/DrkSephy/django-hackathon-starter",
+    "tags": ["python", "django", "hackathon"]
   }
 ]
