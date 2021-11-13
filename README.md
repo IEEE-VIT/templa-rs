@@ -16,6 +16,15 @@
 <p align="center">Consider leaving a :star: if you found the project helpful.</p>
 
 # Templa-rs
+```
+████████╗███████╗███╗   ███╗██████╗ ██╗      █████╗     ██████╗ ███████╗
+╚══██╔══╝██╔════╝████╗ ████║██╔══██╗██║     ██╔══██╗    ██╔══██╗██╔════╝
+   ██║   █████╗  ██╔████╔██║██████╔╝██║     ███████║    ██████╔╝███████╗
+   ██║   ██╔══╝  ██║╚██╔╝██║██╔═══╝ ██║     ██╔══██║    ██╔══██╗╚════██║
+   ██║   ███████╗██║ ╚═╝ ██║██║     ███████╗██║  ██║    ██║  ██║███████║
+   ╚═╝   ╚══════╝╚═╝     ╚═╝╚═╝     ╚══════╝╚═╝  ╚═╝    ╚═╝  ╚═╝╚══════╝
+```
+
 Templa-rs is a one-of-a-kind TUI tool written in Rust, which helps you generate boilerplate templates for various types of projects and architectures in a matter of seconds!
 
 ![Templa-rs](https://i.imgur.com/H2YjBSr.gif)
