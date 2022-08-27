@@ -20,7 +20,16 @@ Templa-rs is a one-of-a-kind TUI tool written in Rust, which helps you generate 
 
 ![Templa-rs](https://i.imgur.com/H2YjBSr.gif)
 
-Figma file for the landing page design: [Link](https://www.figma.com/file/XRDKii6iXCl0pDPCVJWaM4/Templa-rs?node-id=1%3A2)
+
+## Landing Page
+
+<p align="center">
+<img width="512" alt="Templa-rs" src="https://user-images.githubusercontent.com/79946076/187041759-744c5af9-59c9-4f99-800c-3f288ac01c36.png">
+</p>
+
+> **Landing Page Design:** [Figma File](https://www.figma.com/file/XRDKii6iXCl0pDPCVJWaM4/Templa-rs?node-id=1:2)
+
+If interested in developing this website, contribute to [issue#54](https://github.com/IEEE-VIT/templa-rs/issues/54).
 
 ## Usage
 1) Download templa-rs [here](https://github.com/IEEE-VIT/templa-rs/releases)
