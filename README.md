@@ -66,6 +66,16 @@ The Template Preview will show you a tree of the files that will be created when
 * [Rust](https://www.rust-lang.org/)
 * [tui-rs](https://github.com/fdehau/tui-rs)
 
+## Landing Page
+
+This is the design of the Landing Page website. It is not yet developed, if interested in developing this website, please contribute to [issue#54](https://github.com/IEEE-VIT/templa-rs/issues/54).
+
+<p align="center">
+<img width="512" alt="Templa-rs" src="https://user-images.githubusercontent.com/79946076/187041759-744c5af9-59c9-4f99-800c-3f288ac01c36.png">
+</p>
+
+> **Link to the design:** [Figma File](https://www.figma.com/file/XRDKii6iXCl0pDPCVJWaM4/Templa-rs?node-id=1:2)
+
 ## Getting Started Contributing
 Got a great new feature or a boilerplate you want to add? Why not contribute to the project:
 1) Fork it.
